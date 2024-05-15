@@ -33,10 +33,8 @@ pipeline {
 
     stage("Display EKS version"){
       steps{ 
-        script {
-              withKubeConfig([credentialsId: 'kubeconfig', serverUrl: '']) {
-                sh 'kubectl version --client'
-               }
+           sh 'sh(aws eks --region us-east-1 update-kubeconfig --name labeskcluster'
+           sh 'kubectl get nodes'
           }
       }
     }  
