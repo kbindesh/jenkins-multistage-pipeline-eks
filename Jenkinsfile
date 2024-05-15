@@ -31,9 +31,9 @@ pipeline {
       }
     }
 
-    stage("Deploy app to EKS"){
+    stage("Display EKS version"){
       steps{
-        sh 'kubectl apply -f deployment.yml'
+        sh 'kubectl version --client'
       }
     }
   }
