@@ -9,20 +9,26 @@ pipeline {
 
   stages {
     stage("Build image") {
-        sh 'docker build -t ${Docker_Username}/nodejsapp:$BUILD_NUMBER' .
+      steps {
+        sh 'docker build -t ${Docker_Username}/nodejsapp:$BUILD_NUMBER .'
         sh 'docker image list'
+      }
     }
     stage('Test image'){
       steps {
             echo 'Empty'
       }
     }
-    withCredentials([string(credentialsId: 'DOCKERHUB_CREDENTIALS', variable: 'PASSWORD')]) {
-        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+    stage('Connecting to DockerHub') {
+      steps{
+          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+      }
     }
     
     stage("Push Image"){
+      steps {
         sh 'docker push ${Docker_Username}/node-todo-test:$BUILD_NUMBER'
+      }
     }
 
     stage("Deploy app to EKS"){
