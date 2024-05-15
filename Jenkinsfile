@@ -33,7 +33,7 @@ pipeline {
 
     stage("Display EKS version"){
       steps{ 
-           sh 'sh(aws eks --region us-east-1 update-kubeconfig --name labeskcluster'
+           sh 'sh(aws eks --region us-east-1 update-kubeconfig --name labekscluster'
            sh 'kubectl get nodes'
           }
       }
