@@ -19,7 +19,7 @@ This project will demonstrate the end-to-end implementation (CD pipeline) of app
 
 ### 1.1 Develop `Application code` + `Dockerfile` + `Jenkinsfile + Kubernetes manifests`
 
-- Get the sample terraform scripts to be deployed from here https://github.com/kbindesh/aws-infra-tf-jenkins-project.
+- This repo has a sample application code, Dockerfile, Jenkinsfile and K8s manifests which you may clone/fork it for learning purpose.
 
 ```
 # To clone the code on your local system
