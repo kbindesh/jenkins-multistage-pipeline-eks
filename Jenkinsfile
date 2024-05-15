@@ -32,9 +32,11 @@ pipeline {
     }
 
     stage("Display EKS version"){
-      steps{
-        sh 'kubectl version --client'
-      }
+      script {
+            withKubeConfig([credentialsId: 'kubeconfig', serverUrl: '']) {
+              sh 'kubectl version --client'
+             }
+           }
     }
   }
 }
