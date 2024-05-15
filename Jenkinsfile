@@ -27,7 +27,7 @@ pipeline {
     
     stage("Push Image"){
       steps {
-        sh 'docker push ${Docker_Username}/node-todo-test:$BUILD_NUMBER'
+        sh 'docker push ${Docker_Username}/nodejsapp:$BUILD_NUMBER'
       }
     }
 
